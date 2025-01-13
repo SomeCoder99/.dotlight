@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+
+<!--
+  This is a very simple config file with many options missing. For a complete
+  set of options with comments, see docs/rc.xml.all
+-->
+
+<labwc_config>
+
+  <theme>
+    <name>Dracula</name>
+    <icon>Papirus-Dark</icon>
+    <titlebar layout="menu,icon:iconify,max,close"></titlebar>
+    <cornerRadius>0</cornerRadius>
+    <font name="Pixel Code" size="10" />
+    <dropShadows>no</dropShadows>
+  </theme>
+
+  <keyboard>
+    <repeatDelay>200</repeatDelay>
+    <repeatRate>40</repeatRate>
+    <default />
+
+    <keybind key="W-Return"><action name="None"/></keybind>
+    <keybind key="A-F3"><action name="None"/></keybind>
+    <keybind key="A-F4"><action name="None"/></keybind>
+    <keybind key="W-a"><action name="None"/></keybind>
+    <keybind key="A-Space"><action name="None"/></keybind>
+    <keybind key="A-Tab"><action name="None"/></keybind>
+    <keybind key="A-S-Tab"><action name="None"/></keybind>
+
+    <keybind key="A-Left"><action name="None"/></keybind>
+    <keybind key="A-Right"><action name="None"/></keybind>
+    <keybind key="A-Down"><action name="None"/></keybind>
+    <keybind key="A-Up"><action name="None"/></keybind>
+    <keybind key="W-Left"><action name="None"/></keybind>
+    <keybind key="W-Right"><action name="None"/></keybind>
+    <keybind key="W-Down"><action name="None"/></keybind>
+    <keybind key="W-Up"><action name="None"/></keybind>
+
+    <keybind key="W-q"><action name="Execute" command="ghostty" /></keybind>
+    <keybind key="W-x"><action name="Execute" command="rofi -show drun" /></keybind>
+    <keybind key="W-a"><action name="ShowMenu" menu="client-menu" /></keybind>
+    <keybind key="W-r"><action name="Reconfigure"/></keybind>
+    <keybind key="W-="><action name="ToggleMaximize"/></keybind>
+    <keybind key="W--"><action name="Iconify"/></keybind>
+    <keybind key="W-f"><action name="ToggleFullscreen"/></keybind>
+    <keybind key="W-c"><action name="Close"/></keybind>
+    <keybind key="W-S-c"><action name="Kill"/></keybind>
+    <keybind key="W-Tab"><action name="NextWindow"/></keybind>
+    <keybind key="W-S-Tab"><action name="PreviousWindow"/></keybind>
+
+    <keybind key="W-1"><action name="GoToDesktop" to="1"/></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2"/></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3"/></keybind>
+    <keybind key="W-S-1"><action name="SendToDesktop" to="1"/></keybind>
+    <keybind key="W-S-2"><action name="SendToDesktop" to="2"/></keybind>
+    <keybind key="W-S-3"><action name="SendToDesktop" to="3"/></keybind>
+
+    <keybind key="W-C-0"><action name="Execute" command="brightnessctl set 1%+"/></keybind>
+    <keybind key="W-C-9"><action name="Execute" command="brightnessctl set 1%-"/></keybind>
+  </keyboard>
+
+  <libinput>
+    <device category="touchpad">
+      <naturalScroll>true</naturalScroll>
+    </device>
+  </libinput>
+
+  <desktops number="3"/>
+
+  <mouse>
+    <default/>
+    <context name="Frame">
+      <mousebind button="A-Left" action="Press"><action name="None"/></mousebind>
+      <mousebind button="A-Right" action="Press"><action name="None"/></mousebind>
+      <mousebind button="A-Left" action="Drag"><action name="None"/></mousebind>
+      <mousebind button="A-Right" action="Drag"><action name="None"/></mousebind>
+
+      <mousebind button="W-Right" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+      <mousebind button="W-Left" action="Drag"><action name="Move" /></mousebind>
+      <mousebind button="W-Right" action="Drag"><action name="Resize" /></mousebind>
+      <mousebind button="W-Left" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+      <mousebind button="W-Left" action="Drag"><action name="Move" /></mousebind>
+      <mousebind button="W-Right" action="Drag"><action name="Resize" /></mousebind>
+    </context>
+  </mouse>
+
+  <windowRules>
+    <windowRule identifier="com.mitchellh.ghostty" serverDecoration="yes">
+      <action name=""/>
+    </windowRule>
+  </windowRules>
+</labwc_config>

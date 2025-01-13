@@ -1,0 +1,210 @@
+# color palette
+theme-bg: &theme-bg 282A36FF #282A36
+theme-curline: &theme-curline 44475AFF #44475A
+theme-fg: &theme-fg F8F8F2FF #F8F8F2
+theme-bg-alt: &theme-bg-alt 6272A4FF #6272A4
+theme-cyan: &theme-cyan 8BE9FDFF #8BE9FD
+theme-green: &theme-green 50FA7BFF #50FA7B
+theme-orange: &theme-orange FFB86CFF #FFB86C
+theme-pink: &theme-pink FF79C6FF #FF79C6
+theme-purple: &theme-purple BD93F9FF #BD93F9
+theme-red: &theme-red FF5555FF #FF5555
+theme-yellow: &theme-yellow F1FA8CFF #F1FA8C
+
+font-icon: &font-icon Symbols Nerd Font:pixelsize=16
+
+icon-bat-charging: &icon-bat-charging 󰂄
+icon-bat-danger: &icon-bat-danger 󰂃
+icon-bat: &icon-bat 󰁹
+icon-bat90: &icon-bat90 󰂂
+icon-bat80: &icon-bat80 󰂁
+icon-bat70: &icon-bat70 󰂀
+icon-bat60: &icon-bat60 󰁿
+icon-bat50: &icon-bat50 󰁾
+icon-bat40: &icon-bat40 󰁽
+icon-bat30: &icon-bat30 󰁼
+icon-net-wifi: &icon-net-wifi 󰖩
+icon-net-ethernet: &icon-net-ethernet 󰈀
+icon-backlight: &icon-backlight 󰃞
+icon-clock: &icon-clock 󰥔
+
+module-padding: &module-padding 10
+module-border: &module-border 2
+
+bar:
+  height: 24
+  location: bottom
+  background: *theme-bg
+  foreground: *theme-fg
+  font: Pixel Code:pixelsize=12
+  font-shaping: none
+  margin: 0
+  spacing: 2
+
+  left:
+    - label:
+        content:
+          - list: 
+              spacing: 0
+              items:
+                - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
+                - string: {text: "󰣇", font: *font-icon, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
+                - empty: {margin: 1, deco: {background: {color: *theme-cyan}}}
+                - string: {text: Arch, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
+                - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
+
+    - foreign-toplevel:
+        content:
+          - map:
+              conditions:
+                ~activated: {empty: {}}
+                activated: {string: {text: "[{app-id}] {title}", max: 80}}
+
+  right:
+    - backlight:
+        name: intel_backlight
+        content:
+          - list:
+              spacing: 0
+              items:
+                - list:
+                    spacing: 0
+                    foreground: *theme-bg
+                    deco: {background: {color: *theme-yellow}}
+                    items:
+                      - string: {margin: 4, text: *icon-backlight, font: *font-icon}
+                - list:
+                    spacing: 0
+                    deco: {border: {color: *theme-yellow, size: *module-border}}
+                    items:
+                      - string: {text: "{percent:3}%", foreground: *theme-yellow, margin: *module-padding}
+
+    - network:
+        content:
+          map:
+            default: {empty: {}}
+            conditions:
+              state == up && (name == wlan0 || name == wlp1s0):
+                list:
+                  spacing: 0
+                  items:
+                    - list:
+                        spacing: 0
+                        foreground: *theme-bg
+                        deco: {background: {color: *theme-purple}}
+                        items:
+                          - string: {margin: 4, text: *icon-net-wifi, font: *font-icon}
+                    - list:
+                        spacing: 0
+                        deco: {border: {color: *theme-purple, size: *module-border}}
+                        items:
+                          - map:
+                              default: {string: {margin: *module-padding, text: "{ssid}", foreground: *theme-purple}}
+                              conditions: {ssid == "": {string: {margin: *module-padding, text: "{ipv4}", foreground: *theme-purple}}}
+              state == up:
+                list:
+                  spacing: 0
+                  items:
+                    - list:
+                        spacing: 0
+                        foreground: *theme-bg
+                        deco: {background: {color: *theme-purple}}
+                        items:
+                          - string: {margin: 4, text: *icon-net-ethernet, font: *font-icon}
+                    - list:
+                        spacing: 0
+                        deco: {border: {color: *theme-purple, size: *module-border}}
+                        items: 
+                          - string: {margin: *module-padding, text: "{ipv4}", foreground: *theme-purple}
+
+    - battery:
+        name: "BAT0"
+        poll-interval: 1000
+        content:
+          - list:
+              spacing: 0
+              items:
+                - map:
+                    default:
+                      list:
+                        spacing: 0
+                        items:
+                          - list:
+                              spacing: 0
+                              foreground: *theme-bg
+                              deco: {background: {color: *theme-cyan}}
+                              items:
+                                - map:
+                                    default: {empty: {}}
+                                    conditions:
+                                      capacity > 90: {string: {margin: 4, text: *icon-bat, font: *font-icon}}
+                                      capacity > 80: {string: {margin: 4, text: *icon-bat90, font: *font-icon}}
+                                      capacity > 70: {string: {margin: 4, text: *icon-bat80, font: *font-icon}}
+                                      capacity > 60: {string: {margin: 4, text: *icon-bat70, font: *font-icon}}
+                                      capacity > 50: {string: {margin: 4, text: *icon-bat60, font: *font-icon}}
+                                      capacity > 40: {string: {margin: 4, text: *icon-bat50, font: *font-icon}}
+                                      capacity > 30: {string: {margin: 4, text: *icon-bat40, font: *font-icon}}
+                                      capacity > 20: {string: {margin: 4, text: *icon-bat30, font: *font-icon}}
+                          - list:
+                              spacing: 0
+                              deco: {border: {color: *theme-cyan, size: *module-border}}
+                              items:
+                                - string:
+                                    margin: *module-padding
+                                    text: "{capacity}%"
+                                    foreground: *theme-cyan
+                    conditions:
+                      state == charging:
+                        list:
+                          spacing: 0
+                          items:
+                            - list:
+                                spacing: 0
+                                foreground: *theme-bg
+                                deco: {background: {color: *theme-green}}
+                                items:
+                                  - string: {margin: 4, text: *icon-bat-charging, font: *font-icon}
+                            - list:
+                                spacing: 0
+                                deco: {border: {color: *theme-green, size: *module-border}}
+                                items:
+                                  - string:
+                                      margin: *module-padding
+                                      text: "{capacity}%"
+                                      foreground: *theme-green
+                      capacity <= 20:
+                        list:
+                          spacing: 0
+                          items:
+                            - list:
+                                spacing: 0
+                                foreground: *theme-bg
+                                deco: {background: {color: *theme-red}}
+                                items:
+                                  - string: {margin: 4, text: *icon-bat-danger, font: *font-icon}
+                            - list:
+                                spacing: 0
+                                deco: {border: {color: *theme-red, size: *module-border}}
+                                items:
+                                  - string:
+                                      margin: *module-padding
+                                      text: "{capacity}%"
+                                      foreground: *theme-red
+
+    - clock:
+        time-format: "%H:%M"
+        content:
+          - list:
+              spacing: 0
+              items:
+                - list:
+                    spacing: 0
+                    foreground: *theme-bg
+                    deco: {background: {color: *theme-orange}}
+                    items:
+                      - string: {margin: 4, text: *icon-clock, font: *font-icon}
+                - list:
+                    spacing: 0
+                    deco: {border: {color: *theme-orange, size: *module-border}}
+                    items: 
+                      - string: {margin: *module-padding, text: "{time}", foreground: *theme-orange}

@@ -1,0 +1,14 @@
+font-family = "Pixel Code"
+font-size = 10
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+window-decoration = false
+command = fish
+adjust-cell-width = -0%
+adjust-cell-height = +20%
+adjust-box-thickness = +20%
+theme = Dracula
