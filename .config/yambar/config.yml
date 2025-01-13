@@ -27,6 +27,8 @@ icon-net-wifi: &icon-net-wifi 󰖩
 icon-net-ethernet: &icon-net-ethernet 󰈀
 icon-backlight: &icon-backlight 󰃞
 icon-clock: &icon-clock 󰥔
+icon-cpu: &icon-cpu 󰍛
+icon-memory: &icon-memory 
 
 module-padding: &module-padding 10
 module-border: &module-border 2
@@ -44,23 +46,63 @@ bar:
   left:
     - label:
         content:
-          - list: 
-              spacing: 0
-              items:
-                - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
-                - string: {text: "󰣇", font: *font-icon, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
-                - empty: {margin: 1, deco: {background: {color: *theme-cyan}}}
-                - string: {text: Arch, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
-                - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
+          list: 
+            spacing: 0
+            items:
+              - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
+              - string: {text: "󰣇", font: *font-icon, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
+              - empty: {margin: 1, deco: {background: {color: *theme-cyan}}}
+              - string: {text: Arch, foreground: *theme-bg, deco: {background: {color: *theme-cyan}}}
+              - empty: {margin: 2, deco: {background: {color: *theme-cyan}}}
 
     - foreign-toplevel:
         content:
-          - map:
-              conditions:
-                ~activated: {empty: {}}
-                activated: {string: {text: "[{app-id}] {title}", max: 80}}
+          map:
+            conditions:
+              ~activated: {empty: {}}
+              activated: 
+                - string: {text: "["}
+                - string: {text: "{app-id}", max: 25, foreground: *theme-green}
+                - string: {text: "] {title}", max: 50}
 
   right:
+    - mem:
+        content:
+          list:
+            spacing: 0
+            items:
+              - list:
+                  spacing: 0
+                  foreground: *theme-bg
+                  deco: {background: {color: *theme-green}}
+                  items:
+                    - string: {margin: 4, text: *icon-memory, font: *font-icon}
+              - list:
+                  spacing: 0
+                  deco: {border: {color: *theme-green, size: *module-border}}
+                  items:
+                    - string: {text: "{percent_used}%", foreground: *theme-green, margin: *module-padding}
+
+    - cpu:
+        content:
+          map:
+            conditions:
+              id < 0:
+                list:
+                  spacing: 0
+                  items:
+                    - list:
+                        spacing: 0
+                        foreground: *theme-bg
+                        deco: {background: {color: *theme-red}}
+                        items:
+                          - string: {margin: 4, text: *icon-cpu, font: *font-icon}
+                    - list:
+                        spacing: 0
+                        deco: {border: {color: *theme-red, size: *module-border}}
+                        items:
+                          - string: {text: "{cpu}%", foreground: *theme-red, margin: *module-padding}
+
     - backlight:
         name: intel_backlight
         content:
@@ -77,7 +119,7 @@ bar:
                     spacing: 0
                     deco: {border: {color: *theme-yellow, size: *module-border}}
                     items:
-                      - string: {text: "{percent:3}%", foreground: *theme-yellow, margin: *module-padding}
+                      - string: {text: "{percent}%", foreground: *theme-yellow, margin: *module-padding}
 
     - network:
         content:
@@ -94,13 +136,6 @@ bar:
                         deco: {background: {color: *theme-purple}}
                         items:
                           - string: {margin: 4, text: *icon-net-wifi, font: *font-icon}
-                    - list:
-                        spacing: 0
-                        deco: {border: {color: *theme-purple, size: *module-border}}
-                        items:
-                          - map:
-                              default: {string: {margin: *module-padding, text: "{ssid}", foreground: *theme-purple}}
-                              conditions: {ssid == "": {string: {margin: *module-padding, text: "{ipv4}", foreground: *theme-purple}}}
               state == up:
                 list:
                   spacing: 0
@@ -111,11 +146,6 @@ bar:
                         deco: {background: {color: *theme-purple}}
                         items:
                           - string: {margin: 4, text: *icon-net-ethernet, font: *font-icon}
-                    - list:
-                        spacing: 0
-                        deco: {border: {color: *theme-purple, size: *module-border}}
-                        items: 
-                          - string: {margin: *module-padding, text: "{ipv4}", foreground: *theme-purple}
 
     - battery:
         name: "BAT0"
