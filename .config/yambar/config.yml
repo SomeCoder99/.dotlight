@@ -11,7 +11,7 @@ theme-purple: &theme-purple BD93F9FF #BD93F9
 theme-red: &theme-red FF5555FF #FF5555
 theme-yellow: &theme-yellow F1FA8CFF #F1FA8C
 
-font-icon: &font-icon Symbols Nerd Font:pixelsize=16
+font-icon: &font-icon Symbols Nerd Font:pixelsize=12
 
 icon-bat-charging: &icon-bat-charging 󰂄
 icon-bat-danger: &icon-bat-danger 󰂃
@@ -30,15 +30,15 @@ icon-clock: &icon-clock 󰥔
 icon-cpu: &icon-cpu 󰍛
 icon-memory: &icon-memory 
 
-module-padding: &module-padding 10
-module-border: &module-border 2
+module-padding: &module-padding 6
+module-border: &module-border 1
 
 bar:
-  height: 24
+  height: 20
   location: bottom
   background: *theme-bg
   foreground: *theme-fg
-  font: Pixel Code:pixelsize=12
+  font: Pixel Code:pixelsize=9
   font-shaping: none
   margin: 0
   spacing: 2
