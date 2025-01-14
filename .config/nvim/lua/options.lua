@@ -11,3 +11,4 @@ o.tabstop = 2
 o.shiftwidth = 2
 o.clipboard = ""
 o.relativenumber = true
+o.autoindent = true

@@ -3,6 +3,8 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    blade = { "pint" },
+    php = { "pint" },
   },
   formatters = {
     stylua = {
