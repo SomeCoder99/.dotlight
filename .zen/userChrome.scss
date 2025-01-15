@@ -1,0 +1,168 @@
+$home: "file:///home/rizwan";
+$chrome: "file:///home/rizwan/.zen/ca5f2osk.Default (beta)/chrome";
+// DANGER: Don't change code above this comment or the 'apply.sh' script won't work
+$assets: $chrome + "/assets";
+
+// THEME: Dracula
+$bg: #282A36;
+$curline: #44475A;
+$fg: #F8F8F2;
+$bg-alt: #6272A4;
+$cyan: #8BE9FD;
+$green: #50FA7B;
+$orange: #FFB86C;
+$pink: #FF79C6;
+$purple: #BD93F9;
+$red: #FF5555;
+$yellow: #F1FA8C;
+
+$font: "Pixel Code";
+$font-size: 10px;
+
+$toolbar-height: 28px;
+
+* {
+  font-family: $font !important;
+  font-size: $font-size !important;
+  border-radius: 0 !important;
+}
+
+#nav-bar {
+  background: $bg !important;
+  color: $fg !important;
+  margin-bottom: 0 !important;
+  height: $toolbar-height !important;
+  max-height: $toolbar-height !important;
+  min-height: $toolbar-height !important;
+}
+#navigator-toolbox {
+  background: $bg !important;
+  color: $fg !important;
+}
+#zen-tabbox-wrapper {
+  --zen-border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+#tabbrowser-tabpanels {
+  background-color: $bg !important;
+}
+
+toolbarbutton {
+  margin: 0 !important;
+  margin-inline: 0 !important;
+  padding: 0 !important;
+  * { border-radius: 0 !important }
+
+  &#back-button { image-rendering: pixelated !important; list-style-image: url($assets + "/back.png") !important }
+  &#forward-button { image-rendering: pixelated !important; list-style-image: url($assets + "/forward.png") !important }
+  &#reload-button { image-rendering: pixelated !important; list-style-image: url($assets + "/reload.png") !important }
+  &#stop-button { image-rendering: pixelated !important; list-style-image: url($assets + "/stop.png") !important }
+  &#home-button { image-rendering: pixelated !important; list-style-image: url($assets + "/home.png") !important }
+  &#tabs-newtab-button { image-rendering: pixelated !important; list-style-image: url($assets + "/open-new-tab.png") !important }
+}
+
+#reload-button > .toolbarbutton-animatable-box > .toolbarbutton-animatable-image {
+  all: unset !important;
+  display: none !important;
+}
+#identity-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/identity.png") !important }
+#tracking-protection-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/protection.png") !important }
+#star-button { image-rendering: pixelated !important; list-style-image: url($assets + "/star.png") !important }
+#reader-mode-button-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/reader.png") !important }
+#permissions-granted-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/setting.png") !important }
+#unified-extensions-button { image-rendering: pixelated !important; list-style-image: url($assets + "/plugin.png") !important }
+#PanelUI-menu-button { image-rendering: pixelated !important; list-style-image: url($assets + "/menu.png") !important }
+
+#urlbar-container {
+  margin: 0 !important;
+}
+#urlbar {
+  top: -4px !important;
+}
+#urlbar-input-container {
+  border: none !important;
+  padding: 0 !important;
+}
+#urlbar-search-mode-indicator {
+  background: $bg-alt !important;
+  padding: 0 1em !important;
+  margin: 4px .5em !important;
+}
+
+#urlbar-background {
+  background-color: $curline !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+toolbarbutton.titlebar-button {
+  &.titlebar-close {
+    image {
+      background-image: url($home + "/.themes/Dracula/openbox-3/close-active.png") !important;
+    }
+  }
+  &.titlebar-max {
+    image {
+      background-image: url($home + "/.themes/Dracula/openbox-3/max-active.png") !important;
+    }
+  }
+  &.titlebar-restore {
+    image {
+      background-image: url($home + "/.themes/Dracula/openbox-3/max_toggled-active.png") !important;
+    }
+  }
+  &.titlebar-min {
+    image {
+      background-image: url($home + "/.themes/Dracula/openbox-3/iconify-active.png") !important;
+    }
+  }
+
+  &:hover > .toolbarbutton-icon {
+    background-color: color-mix(in srgb, currentColor 12%, transparent) !important;
+  }
+}
+
+#zen-sidepanel-button {
+  image { image-rendering: pixelated !important; list-style-image: url($assets + "/sidebar.png") !important }
+}
+
+#tabs-newtab-button {
+  margin: 0 auto !important;
+}
+.tab-background {
+  border-radius: 0 !important;
+}
+.tab-icon-image { image-rendering: pixelated !important; content: url($assets + "/tab.png") !important }
+#downloads-indicator-anchor { image-rendering: pixelated !important; list-style-image: url($assets + "/download.png") !important }
+
+.urlbarView-row {
+  &[row-selectable]:not([selected]):hover {
+    background-color: $bg-alt !important;
+  }
+  &[selected] {
+    background-color: $bg !important;
+  }
+}
+.urlbarView-favicon {
+  .urlbarView-row[type=tabtosearch]:not([selected]) > .urlbarView-row-inner > .urlbarView-no-wrap > & {
+    color: $purple !important;
+  }
+}
+
+#urlbar-engine-one-off-item-bookmarks .button-icon {
+  image-rendering: pixelated !important;
+  list-style-image: url($assets + "/bookmark.png") !important;
+}
+#urlbar-engine-one-off-item-tabs .button-icon {
+  image-rendering: pixelated !important;
+  list-style-image: url($assets + "/tab.png") !important;
+}
+#urlbar-engine-one-off-item-history .button-icon {
+  image-rendering: pixelated !important;
+  list-style-image: url($assets + "/history.png") !important;
+}
+#urlbar-anon-search-settings .button-icon {
+  image-rendering: pixelated !important;
+  list-style-image: url($assets + "/setting.png") !important;
+}
