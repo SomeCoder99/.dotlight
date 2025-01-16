@@ -3,6 +3,8 @@ $chrome: "file:///home/rizwan/.zen/ca5f2osk.Default (beta)/chrome";
 // DANGER: Don't change code above this comment or the 'apply.sh' script won't work
 $assets: $chrome + "/assets";
 
+@use 'sass:color';
+
 // THEME: Dracula
 $bg: #282A36;
 $curline: #44475A;
@@ -48,7 +50,7 @@ $toolbar-height: 28px;
   background-color: $bg !important;
 }
 
-toolbarbutton {
+toolbarbutton:not(#appMenu-zoomReduce-button2):not(#appMenu-zoomEnlarge-button2) {
   margin: 0 !important;
   margin-inline: 0 !important;
   padding: 0 !important;
@@ -69,6 +71,9 @@ toolbarbutton {
 #identity-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/identity.png") !important }
 #tracking-protection-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/protection.png") !important }
 #star-button { image-rendering: pixelated !important; list-style-image: url($assets + "/star.png") !important }
+#picture-in-picture-button-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/picture.png") !important }
+#translations-button-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/language.png") !important }
+#shopping-sidebar-button-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/shopping.png") !important }
 #reader-mode-button-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/reader.png") !important }
 #permissions-granted-icon { image-rendering: pixelated !important; list-style-image: url($assets + "/setting.png") !important }
 #unified-extensions-button { image-rendering: pixelated !important; list-style-image: url($assets + "/plugin.png") !important }
@@ -135,6 +140,30 @@ toolbarbutton.titlebar-button {
 }
 #downloads-indicator-anchor { image-rendering: pixelated !important; list-style-image: url($assets + "/download.png") !important }
 
+.tab-icon-image[src="chrome://branding/content/icon32.png"],
+.tab-icon-image[src="chrome://browser/skin/privatebrowsing/favicon.svg"] {
+  image-rendering: pixelated !important;
+  content: url($assets + "/tab.png") !important;
+}
+.tab-icon-image[src="chrome://mozapps/skin/extensions/extension.svg"] {
+  image-rendering: pixelated !important;
+  content: url($assets + "/plugin.png") !important;
+}
+.tab-icon-image[src="chrome://global/skin/icons/settings.svg"] {
+  image-rendering: pixelated !important;
+  content: url($assets + "/setting.png") !important;
+}
+.tab-icon-image[src="chrome://browser/skin/customize.svg"] {
+  image-rendering: pixelated !important;
+  content: url($assets + "/edit.png") !important;
+}
+.tab-icon-image {
+  &:not([src]), &:-moz-broken {
+    image-rendering: pixelated !important;
+    content: url($assets + "/web.png") !important;
+  }
+}
+
 .urlbarView-row {
   &[row-selectable]:not([selected]):hover {
     background-color: $bg-alt !important;
@@ -164,4 +193,116 @@ toolbarbutton.titlebar-button {
 #urlbar-anon-search-settings .button-icon {
   image-rendering: pixelated !important;
   list-style-image: url($assets + "/setting.png") !important;
+}
+
+#appMenu-popup {
+  panelview {
+    background: color.adjust($bg, $lightness: 5%) !important;
+    min-width: 35em !important;
+  }
+  panelmultiview {
+    background: color.adjust($bg, $lightness: 5%) !important;
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+  }
+}
+#appMenu-fxa-label2::before {
+  margin-left: 10px !important;
+}
+:is(label, description)[value]::before {
+  margin-right: 10px !important;
+}
+#appMenu-fxa-status2 {
+  padding: 0 !important;
+}
+#appMenu-new-tab-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/open-new-tab.png") !important }
+#appMenu-new-window-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/open-new-window.png") !important }
+#appMenu-new-private-window-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/open-new-private-window.png") !important }
+#appMenu-bookmarks-button { image-rendering: pixelated !important; list-style-image: url($assets + "/bookmark.png") !important }
+#appMenu-history-button { image-rendering: pixelated !important; list-style-image: url($assets + "/history.png") !important }
+#appMenu-downloads-button { image-rendering: pixelated !important; list-style-image: url($assets + "/download.png") !important }
+#appMenu-passwords-button { image-rendering: pixelated !important; list-style-image: url($assets + "/password.png") !important }
+#appMenu-extensions-themes-button { image-rendering: pixelated !important; list-style-image: url($assets + "/plugin.png") !important }
+#appMenu-print-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/print.png") !important }
+#appMenu-save-file-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/save.png") !important }
+#appMenu-find-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/search.png") !important }
+#appMenu-translate-button { image-rendering: pixelated !important; list-style-image: url($assets + "/language.png") !important }
+#appMenu-settings-button { image-rendering: pixelated !important; list-style-image: url($assets + "/setting.png") !important }
+#appMenu-more-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/menu.png") !important }
+#appMenu-help-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/help.png") !important }
+#appMenu-fullscreen-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/fullscreen.png") !important }
+#appMenu-zoomReduce-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/decrease.png") !important }
+#appMenu-zoomEnlarge-button2 { image-rendering: pixelated !important; list-style-image: url($assets + "/increase.png") !important }
+#appmenu-moreTools-button { image-rendering: pixelated !important; list-style-image: url($assets + "/edit.png") !important }
+#appmenu-zen-share-rice { image-rendering: pixelated !important; list-style-image: url($assets + "/share.png") !important }
+
+.subviewbutton[label="Web Developer Tools"] { image-rendering: pixelated !important; list-style-image: url($assets + "/dev-tools.png") !important }
+.subviewbutton[label="Task Manager"] { image-rendering: pixelated !important; list-style-image: url($assets + "/task.png") !important }
+.subviewbutton[label="Remote Debugging"] { image-rendering: pixelated !important; list-style-image: url($assets + "/debug.png") !important }
+.subviewbutton[label="Browser Toolbox"] { image-rendering: pixelated !important; list-style-image: url($assets + "/toolbox.png") !important }
+.subviewbutton[label="Browser Console"] { image-rendering: pixelated !important; list-style-image: url($assets + "/console.png") !important }
+.subviewbutton[label="Responsive Design Mode"] { image-rendering: pixelated !important; list-style-image: url($assets + "/responsive.png") !important }
+.subviewbutton[label="Eyedropper"] { image-rendering: pixelated !important; list-style-image: url($assets + "/eyedrop.png") !important }
+.subviewbutton[label="Page Source"] { image-rendering: pixelated !important; list-style-image: url($assets + "/source.png") !important }
+.subviewbutton[label="Extensions for developers"] { image-rendering: pixelated !important; list-style-image: url($assets + "/plugin.png") !important }
+
+#panelMenuBookmarkThisPage { image-rendering: pixelated !important; list-style-image: url($assets + "/tab.png") !important }
+#panelMenu_searchBookmarks { image-rendering: pixelated !important; list-style-image: url($assets + "/search.png") !important }
+#panelMenu_viewBookmarksToolbar { image-rendering: pixelated !important; list-style-image: url($assets + "/hide.png") !important }
+
+#appMenuRecentlyClosedTabs { background-image: none !important; image-rendering: pixelated !important; list-style-image: url($assets + "/tab.png") !important }
+#appMenuRecentlyClosedWindows { background-image: none !important; image-rendering: pixelated !important; list-style-image: url($assets + "/window.png") !important }
+#appMenuSearchHistory { background-image: none !important; image-rendering: pixelated !important; list-style-image: url($assets + "/search.png") !important }
+#appMenuClearRecentHistory { background-image: none !important; image-rendering: pixelated !important; list-style-image: url($assets + "/trash.png") !important }
+#PanelUI-historyMore { background-image: none !important; image-rendering: pixelated !important; list-style-image: url($assets + "/menu.png") !important }
+
+#appMenu_menu_openHelp { image-rendering: pixelated !important; list-style-image: url($assets + "/help.png") !important }
+#appMenu_feedbackPage { image-rendering: pixelated !important; list-style-image: url($assets + "/share.png") !important }
+#appMenu_helpSafeMode, #appMenu_troubleShooting { image-rendering: pixelated !important; list-style-image: url($assets + "/debug.png") !important }
+#appMenu_menu_HelpPopup_reportPhishingtoolmenu { image-rendering: pixelated !important; list-style-image: url($assets + "/report.png") !important }
+#appMenu_helpSwitchDevice { image-rendering: pixelated !important; list-style-image: url($assets + "/report.png") !important }
+#appMenu_aboutName { image-rendering: pixelated !important; list-style-image: url($assets + "/info.png") !important }
+
+#PanelUI-bookmarks .panel-header > h1 > span::before {
+  image-rendering: pixelated !important;
+  background: url($assets + "/bookmark.png") center / 16px no-repeat !important;
+}
+#PanelUI-history .panel-header > h1 > span::before {
+  image-rendering: pixelated !important;
+  background: url($assets + "/history.png") center / 16px no-repeat !important;
+}
+#PanelUI-helpView .panel-header > h1 > span::before {
+  image-rendering: pixelated !important;
+  background: url($assets + "/help.png") center / 16px no-repeat !important;
+}
+panel toolbarseparator {
+  border: 1px solid $bg-alt !important;
+}
+.PanelUI-subView .subviewbutton-nav::after {
+  image-rendering: pixelated !important;
+  content: url($assets + "/forward.png") !important;
+}
+.panel-header > .subviewbutton-back {
+  image-rendering: pixelated !important;
+  content: url($assets + "/back.png") !important;
+}
+#appMenu-zoom-controls {
+  padding: 0 !important;
+  border-top-color: $bg-alt !important;
+  gap: 10px !important;
+
+  #appMenu-fullscreen-button2::before {
+    border-inline: none !important;
+  }
+}
+#appMenu-zoomReset-button2 > toolbarbutton-text::before {
+  margin-right: 0 !important;
+}
+#appMenu-popup toolbarbutton:hover {
+  background: color.adjust($bg-alt, $lightness: -10%) !important;
+}
+
+#PersonalToolbar {
+  background: color.adjust($bg, $lightness: -5%) !important;
+  color: $fg !important;
 }
