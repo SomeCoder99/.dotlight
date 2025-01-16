@@ -54,6 +54,12 @@
 
     <keybind key="W-C-0"><action name="Execute" command="brightnessctl set 1%+"/></keybind>
     <keybind key="W-C-9"><action name="Execute" command="brightnessctl set 1%-"/></keybind>
+    <keybind key="W-p"><action name="Execute" command="grim"/></keybind>
+    <keybind key="W-C-p">
+      <action name="Execute">
+        <command>bash -c 'grim -g "`slurp`"'</command>
+      </action>
+    </keybind>
   </keyboard>
 
   <libinput>
