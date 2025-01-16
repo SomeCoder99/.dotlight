@@ -140,24 +140,23 @@ toolbarbutton.titlebar-button {
 }
 #downloads-indicator-anchor { image-rendering: pixelated !important; list-style-image: url($assets + "/download.png") !important }
 
-.tab-icon-image[src="chrome://branding/content/icon32.png"],
-.tab-icon-image[src="chrome://browser/skin/privatebrowsing/favicon.svg"] {
-  image-rendering: pixelated !important;
-  content: url($assets + "/tab.png") !important;
-}
-.tab-icon-image[src="chrome://mozapps/skin/extensions/extension.svg"] {
-  image-rendering: pixelated !important;
-  content: url($assets + "/plugin.png") !important;
-}
-.tab-icon-image[src="chrome://global/skin/icons/settings.svg"] {
-  image-rendering: pixelated !important;
-  content: url($assets + "/setting.png") !important;
-}
-.tab-icon-image[src="chrome://browser/skin/customize.svg"] {
-  image-rendering: pixelated !important;
-  content: url($assets + "/edit.png") !important;
-}
 .tab-icon-image {
+  &[src="chrome://branding/content/icon32.png"], &[src="chrome://browser/skin/privatebrowsing/favicon.svg"] {
+    image-rendering: pixelated !important;
+    content: url($assets + "/tab.png") !important;
+  }
+  &[src="chrome://mozapps/skin/extensions/extension.svg"] {
+    image-rendering: pixelated !important;
+    content: url($assets + "/plugin.png") !important;
+  }
+  &[src="chrome://global/skin/icons/settings.svg"] {
+    image-rendering: pixelated !important;
+    content: url($assets + "/setting.png") !important;
+  }
+  &[src="chrome://browser/skin/customize.svg"] {
+    image-rendering: pixelated !important;
+    content: url($assets + "/edit.png") !important;
+  }
   &:not([src]), &:-moz-broken {
     image-rendering: pixelated !important;
     content: url($assets + "/web.png") !important;
@@ -260,7 +259,7 @@ toolbarbutton.titlebar-button {
 #appMenu_feedbackPage { image-rendering: pixelated !important; list-style-image: url($assets + "/share.png") !important }
 #appMenu_helpSafeMode, #appMenu_troubleShooting { image-rendering: pixelated !important; list-style-image: url($assets + "/debug.png") !important }
 #appMenu_menu_HelpPopup_reportPhishingtoolmenu { image-rendering: pixelated !important; list-style-image: url($assets + "/report.png") !important }
-#appMenu_helpSwitchDevice { image-rendering: pixelated !important; list-style-image: url($assets + "/report.png") !important }
+#appMenu_helpSwitchDevice { image-rendering: pixelated !important; list-style-image: url($assets + "/switch.png") !important }
 #appMenu_aboutName { image-rendering: pixelated !important; list-style-image: url($assets + "/info.png") !important }
 
 #PanelUI-bookmarks .panel-header > h1 > span::before {
