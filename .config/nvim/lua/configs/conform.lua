@@ -5,6 +5,7 @@ local options = {
     html = { "prettier" },
     blade = { "pint" },
     php = { "pint" },
+    kotlin = { "ktfmt" },
   },
   formatters = {
     stylua = {

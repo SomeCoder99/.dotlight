@@ -6,6 +6,7 @@ local nvtab = require("nvchad.tabufline")
 
 map("n", "<leader>fe", "<cmd>NvimTreeToggle<cr>", { desc = "Open File Explorer" })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Telescope Live Grep" })
+map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", { desc = "Telescope Live Grep" })
 
 map("n", "<leader><right>", nvtab.next, { desc = "Next Buffer" })
 map("n", "<leader><left>", nvtab.prev, { desc = "Prev Buffer" })
@@ -20,7 +21,7 @@ map("n", "<leader>bo", function()
 end, { desc = "Close Other Buffer" })
 
 map("n", "<leader>f=", function()
-  require("conform").format()
+  require("conform").format { async = true }
 end, { desc = "Format File" })
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Symbol" })
 
